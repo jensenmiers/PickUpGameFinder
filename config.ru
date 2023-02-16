@@ -13,3 +13,8 @@ use Rack::JSONBodyParser
 
 # Our application
 run ApplicationController
+
+use GamesController
+
+# every child controller, we are going to utilize the 'use' keyword
+

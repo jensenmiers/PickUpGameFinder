@@ -1,7 +1,9 @@
-puts "Deleting player/gym/game data..."
+puts "Deleting player/gym/game/signedup_player data..."
 Gym.destroy_all
 Player.destroy_all
 Game.destroy_all
+Signedup_player.destroy_all
+
 puts "🌱 Seeding spices..."
 puts "Adding Gyms"
 memorial_park = Gym.create(
@@ -49,13 +51,20 @@ puts "Adding Games"
 saturday_am = Game.create(
     game_start: '2023-02-18 08:00:00',
     game_end: '2023-02-18 10:00:00',
-    capacity: 10
+    capacity: 10,
 )
 sunday_am = Game.create(
     game_start: '2023-02-19 10:00:00',
     game_end: '2023-02-19 12:00:00',
     capacity: 10
 )
+
+puts "Adding Signed Up Players"
+team_for_sat_am = Signedup_player.create(
+    player: jensen,
+    game: saturday_am
+)
+
 
 # Seed your database here
 

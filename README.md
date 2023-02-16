@@ -1,3 +1,21 @@
+game
+  has_many :signedup_players
+  has_many :players, through: :signedup_players
+
+gym
+  has_many :games
+
+player
+  has_many :signedup_players
+  has_many :games, through: :signedup_players
+
+
+signedup_players
+   belongs_to :player
+   belongs_to :game
+
+
+
 # Phase 3 Project Guidelines
 
 ## Learning Goals

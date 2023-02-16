@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_14_181247) do
+ActiveRecord::Schema.define(version: 2023_02_15_163904) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "game_start"
     t.datetime "game_end"
     t.integer "capacity"
+    t.integer "gym_id"
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -29,6 +30,13 @@ ActiveRecord::Schema.define(version: 2023_02_14_181247) do
     t.string "player_name"
     t.string "player_email"
     t.integer "player_phone_number"
+  end
+
+  create_table "signedup_players", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "player_id"
+    t.index ["game_id"], name: "index_signedup_players_on_game_id"
+    t.index ["player_id"], name: "index_signedup_players_on_player_id"
   end
 
 end
