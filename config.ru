@@ -15,6 +15,7 @@ use Rack::JSONBodyParser
 run ApplicationController
 
 use GamesController
+use GymsController
 
 # every child controller, we are going to utilize the 'use' keyword
 

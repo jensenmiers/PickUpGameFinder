@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
     #Get ALL Games
     get '/games' do
-        Game.all.to_json
+        Game.all.to_json(include: :gym)
     end
 
     get '/games/:id' do
@@ -10,28 +10,16 @@ class GamesController < ApplicationController
         game_specific.to_json
     end
 
-# fetch('http://localhost:9292/games')
-#     .then()
-#     .then(do something with the data)
-
     #Create a game
     post '/games' do
-        game = Game.create(game_start: params[:game_start], game_end: params[:game_end], capacity: params[:capacity])
-        # game.player = current_user
-        # game.save
-            #associate the created game with our (GYM/PLAYER/ETC?)
-
-        # game = games.create(params)
-        # game.to_json
-
-        # game = current_user.games.create(params)
-        # game.to_json
+        game = Game.create(game_start: params[:game_start], game_end: params[:game_end], capacity: params[:capacity], gym_id: params[:gym_id])
+        game.to_json
     end
 
     #Edit a game
     patch '/games/:id' do
         game_specific_edit = Game.find(params[:id])
-        game_specific_edit.update(game_start: params[:game_start],game_end: params[:game_end], capacity: params[:capacity])
+        game_specific_edit.update(game_start: params[:game_start],game_end: params[:game_end], capacity: params[:capacity], gym_id: params[:gym_id])
         game_specific_edit.to_json
     end
 

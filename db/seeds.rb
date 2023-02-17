@@ -52,11 +52,13 @@ saturday_am = Game.create(
     game_start: '2023-02-18 08:00:00',
     game_end: '2023-02-18 10:00:00',
     capacity: 10,
+    gym_id: Gym.all.first.id
 )
 sunday_am = Game.create(
     game_start: '2023-02-19 10:00:00',
     game_end: '2023-02-19 12:00:00',
-    capacity: 10
+    capacity: 10,
+    gym_id: Gym.all.last.id
 )
 
 puts "Adding Signed Up Players"
