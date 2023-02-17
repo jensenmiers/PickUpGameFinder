@@ -5,6 +5,7 @@ class GamesController < ApplicationController
         Game.all.to_json(include: :gym)
     end
 
+    #Get unique game
     get '/games/:id' do
         game_specific = Game.find(params[:id])
         game_specific.to_json
@@ -13,14 +14,14 @@ class GamesController < ApplicationController
     #Create a game
     post '/games' do
         game = Game.create(game_start: params[:game_start], game_end: params[:game_end], capacity: params[:capacity], gym_id: params[:gym_id])
-        game.to_json
+        game.to_json(include: :gym)
     end
 
     #Edit a game
     patch '/games/:id' do
         game_specific_edit = Game.find(params[:id])
         game_specific_edit.update(game_start: params[:game_start],game_end: params[:game_end], capacity: params[:capacity], gym_id: params[:gym_id])
-        game_specific_edit.to_json
+        game_specific_edit.to_json(include: :gym)
     end
 
     #Delete a game
